@@ -53,6 +53,8 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 import hudson.DescriptorExtensionList;
 import hudson.EnvVars;
 import hudson.Extension;
@@ -234,8 +236,7 @@ public class ViewcopyBuilder extends Builder implements Serializable
             }
         }
         
-        // Retrieve the config.xml of the view copied from.
-        // TODO: what happens if this runs on a slave node?
+        // Create the config.xml of the view copied from.
         logger.println(String.format("Fetching configuration of %s...", fromViewNameExpanded));
         
         Document doc;
@@ -341,8 +342,9 @@ public class ViewcopyBuilder extends Builder implements Serializable
     private Document getViewConfigXmlDocument(View view, final PrintStream logger)
             throws IOException, SAXException, ParserConfigurationException
     {
-        XStream2 xStream2 = new XStream2();
+        XStream2 xStream2 = new XStream2(new DomDriver("UTF-8"));
         xStream2.omitField(View.class, "owner");
+        xStream2.omitField(View.class, "name"); // this field causes disaster when overwriting.
         
         PipedOutputStream sout = new PipedOutputStream();
         PipedInputStream sin = new PipedInputStream(sout);
