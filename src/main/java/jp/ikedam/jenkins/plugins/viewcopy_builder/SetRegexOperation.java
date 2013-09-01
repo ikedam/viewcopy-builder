@@ -88,6 +88,8 @@ public class SetRegexOperation extends ViewcopyOperation
                 return FormValidation.error(Messages.SetRegexOperation_regex_empty());
             }
             
+            regex = StringUtils.trim(regex);
+            
             if(regex.contains("$"))
             {
                 // If variable is used, skip the validation.
@@ -138,6 +140,23 @@ public class SetRegexOperation extends ViewcopyOperation
             return null;
         }
         
+        String expandedRegex = StringUtils.trim(env.expand(getRegex()));
+        if(StringUtils.isEmpty(expandedRegex))
+        {
+            logger.println("Regular expression got to empty.");
+            return null;
+        }
+        
+        try
+        {
+            Pattern.compile(expandedRegex);
+        }
+        catch(PatternSyntaxException e)
+        {
+            e.printStackTrace(logger);
+            return null;
+        }
+        
         Node regexNode;
         try
         {
@@ -155,23 +174,6 @@ public class SetRegexOperation extends ViewcopyOperation
             // create new one.
             regexNode = doc.createElement("includeRegex");
             doc.getDocumentElement().appendChild(regexNode);
-        }
-        
-        String expandedRegex = env.expand(getRegex());
-        if(StringUtils.isEmpty(expandedRegex))
-        {
-            logger.println("Regular expression got to empty.");
-            return null;
-        }
-        
-        try
-        {
-            Pattern.compile(expandedRegex);
-        }
-        catch(PatternSyntaxException e)
-        {
-            e.printStackTrace(logger);
-            return null;
         }
         
         regexNode.setTextContent(expandedRegex);

@@ -254,6 +254,33 @@ public class ViewcopyBuilderJenkinsTest
         }
     }
     
+    
+    @Test
+    public void testSelfCopy() throws Exception
+    {
+        ListView srcView = (ListView)j.jenkins.getView("SrcView");
+        
+        FreeStyleProject p = j.createFreeStyleProject("dummy-test");
+        assertFalse(srcView.getItems().contains(p));
+        
+        FreeStyleProject copier = j.createFreeStyleProject();
+        copier.getBuildersList().add(new ViewcopyBuilder(
+                "SrcView",
+                "SrcView",
+                true,
+                Arrays.<ViewcopyOperation>asList(
+                        new SetRegexOperation("dummy-.*")
+                )
+        ));
+        copier.save();
+        
+        j.assertBuildStatusSuccess(copier.scheduleBuild2(0));
+        
+        srcView = (ListView)j.jenkins.getView("SrcView");
+        assertNotNull(srcView);
+        assertTrue(srcView.getItems().contains(p));
+    }
+    
     @SuppressWarnings("deprecation")
     @Test
     public void testPerformFailureForConfiguration() throws Exception
