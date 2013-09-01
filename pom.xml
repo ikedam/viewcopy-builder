@@ -9,7 +9,7 @@
   
   <groupId>jp.ikedam.jenkins.plugins</groupId>
   <artifactId>viewcopy-builder</artifactId>
-  <version>0.1.2-SNAPSHOT</version>
+  <version>0.9.0</version>
   <packaging>hpi</packaging>
   <name>Viewcopy Builder plugin</name>
   <description>Jenkins plugin to copy a view in a build step.</description>
