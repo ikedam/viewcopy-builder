@@ -26,24 +26,13 @@ package jp.ikedam.jenkins.plugins.viewcopy_builder;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-import java.util.Collection;
 
-import javax.servlet.ServletException;
-
-import hudson.model.Item;
-import hudson.model.TopLevelItem;
 import hudson.model.AllView;
-import hudson.model.Descriptor.FormException;
 import hudson.model.ListView;
-import hudson.model.View;
 import hudson.util.FormValidation;
 import jp.ikedam.jenkins.plugins.viewcopy_builder.SetRegexOperation.DescriptorImpl;
 
 import org.junit.Test;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
-import org.kohsuke.stapler.export.Exported;
 
 /**
  *
