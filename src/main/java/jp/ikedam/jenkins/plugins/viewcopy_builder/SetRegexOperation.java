@@ -31,7 +31,6 @@ import hudson.model.View;
 import hudson.util.FormValidation;
 
 import java.io.PrintStream;
-import java.io.Serializable;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -47,7 +46,7 @@ import org.w3c.dom.Node;
  * Set the regular expression of the list view.
  *
  */
-public class SetRegexOperation extends ViewcopyOperation implements Serializable
+public class SetRegexOperation extends ViewcopyOperation
 {
     private static final long serialVersionUID = -3090214188252961833L;
     

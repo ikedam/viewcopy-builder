@@ -24,6 +24,7 @@
 package jp.ikedam.jenkins.plugins.viewcopy_builder;
 
 import java.io.PrintStream;
+import java.io.Serializable;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -57,8 +58,10 @@ import jenkins.model.Jenkins;
  *    <li>annotate the DescriptorImpl with Extension</li>
  * </ol>
  */
-public abstract class ViewcopyOperation extends AbstractDescribableImpl<ViewcopyOperation> implements ExtensionPoint
+public abstract class ViewcopyOperation extends AbstractDescribableImpl<ViewcopyOperation> implements ExtensionPoint, Serializable
 {
+    private static final long serialVersionUID = -166190124086838742L;
+    
     /**
      * Return modified XML document of the view configuration.
      * 

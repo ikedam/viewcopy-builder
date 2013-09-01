@@ -28,7 +28,6 @@ import hudson.Extension;
 import hudson.model.Descriptor;
 
 import java.io.PrintStream;
-import java.io.Serializable;
 
 import javax.xml.xpath.XPathExpressionException;
 
@@ -41,7 +40,7 @@ import org.w3c.dom.Node;
  * Set the description of the view.
  *
  */
-public class SetDescriptionOperation extends ViewcopyOperation implements Serializable
+public class SetDescriptionOperation extends ViewcopyOperation
 {
     private static final long serialVersionUID = -3090214188252961833L;
     

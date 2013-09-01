@@ -564,7 +564,7 @@ public class ViewcopyBuilder extends Builder implements Serializable
          * @param warnIfNotExists
          * @return
          */
-        public FormValidation doCheckViewName(String viewName, boolean warnIfExists, boolean warnIfNotExists)
+        protected FormValidation doCheckViewName(String viewName, boolean warnIfExists, boolean warnIfNotExists)
         {
             viewName = StringUtils.trim(viewName);
             

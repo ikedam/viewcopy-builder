@@ -24,7 +24,6 @@
 package jp.ikedam.jenkins.plugins.viewcopy_builder;
 
 import java.io.PrintStream;
-import java.io.Serializable;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -42,7 +41,7 @@ import org.kohsuke.stapler.QueryParameter;
 /**
  * Replace the string in the configuration.
  */
-public class ReplaceOperation extends ViewcopyOperation implements Serializable
+public class ReplaceOperation extends ViewcopyOperation
 {
     private static final long serialVersionUID = 4305055167945057995L;
     
