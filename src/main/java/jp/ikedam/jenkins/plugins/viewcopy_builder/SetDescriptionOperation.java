@@ -117,7 +117,7 @@ public class SetDescriptionOperation extends ViewcopyOperation
             doc.getDocumentElement().appendChild(descNode);
         }
         
-        String description = (getDescription() != null)?env.expand(getDescription()):"";
+        String description = (getDescription() != null)?StringUtils.trim(env.expand(getDescription())):"";
         
         descNode.setTextContent(description);
         logger.println(String.format("Set description to:\n%s", description));
