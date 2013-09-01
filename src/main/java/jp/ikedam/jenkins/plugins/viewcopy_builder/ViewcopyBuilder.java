@@ -481,7 +481,7 @@ public class ViewcopyBuilder extends Builder implements Serializable
          */
         public ComboBoxModel doFillFromViewNameItems()
         {
-            ComboBoxModel ret = new ComboBoxModel();
+            ComboBoxModel ret = FixedComboBoxModel.createComboBoxModel();
             for(View view: Jenkins.getInstance().getViews())
             {
                 if(view instanceof AllView)

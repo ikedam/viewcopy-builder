@@ -3,9 +3,8 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.494</version><!-- which version of Jenkins is this plugin built against? -->
+    <version>1.480</version><!-- which version of Jenkins is this plugin built against? -->
     <!-- Added REST API for view manipulation at 1.477 -->
-    <!-- combobox is broken at 1.471, and fixed at 1.494 (issue 16069) -->
   </parent>
   
   <groupId>jp.ikedam.jenkins.plugins</groupId>
@@ -61,14 +60,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
-  <dependencies>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>[2.3,]</version>
-    </dependency>
-  </dependencies>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
